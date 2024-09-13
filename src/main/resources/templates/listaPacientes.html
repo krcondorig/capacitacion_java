@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Lista de Pacientes</title>
+</head>
+
+<body>
+	<h1>Lista de Pacientes</h1>
+	<table>
+		<tr th:each="paciente : ${pacientes}">
+			<td th:text="${paciente.id}">ID</td>
+			<td th:text="${paciente.nombre}">Nombre</td>
+			<td th:text="${paciente.apellido}">Apellido</td>
+			<td th:text="${paciente.telefono}">Teléfono</td>
+			<td th:text="${paciente.genero}">Género</td>
+			<td>
+			  <a th:href="@{/paciente/editar/{id}(id=${paciente.id})}">Editar</a>
+			  <button th:onclick="|eliminarPaciente(${paciente.id})|">Eliminar</button>
+			</td>
+		</tr>
+	</table>
+
+	<script>
+		function eliminarPaciente(id) {
+		  fetch(`/paciente/${id}`, {
+		    method: 'DELETE'
+		  })
+		  .then(response => response.text())
+		  .then(message => console.log(message));
+		}
+	</script>
+</body>
+
+</html>

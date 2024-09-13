@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Historial del Paciente</title>
+</head>
+<body>
+    <h1>Historial del Paciente</h1>
+	
+    <table th:if="${pacientesConHistorial != null}">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Diagnóstico</th>
+            <th>Tratamiento</th>
+        </tr>
+        <tr th:each="pacienteConHistorial : ${pacientesConHistorial}">
+            <td th:text="${pacienteConHistorial.id}">ID</td>
+            <td th:text="${pacienteConHistorial.nombre}">Nombre</td>
+            <td th:text="${pacienteConHistorial.apellido}">Apellido</td>
+            <td th:text="${pacienteConHistorial.fecha}">Fecha</td>
+            <td th:text="${pacienteConHistorial.descripcion}">Descripción</td>
+            <td th:text="${pacienteConHistorial.diagnostico}">Diagnóstico</td>
+            <td th:text="${pacienteConHistorial.tratamiento}">Tratamiento</td>
+        </tr>
+    </table>
+</body>
+</html>
