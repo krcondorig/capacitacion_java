@@ -48,13 +48,6 @@ public class PacienteViewController {
 	    return "pacienteConHistorial";
 	}
 	
-	/*@DeleteMapping("/paciente/{id}")
-	@Operation(description = "Elimina un paciente por ID", summary = "Proporciona un ID para eliminar un usuario específico en la base de datos")
-	public String eliminarPacientes(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
-	    pacienteRepository.eliminarPaciente(id);
-	    redirectAttributes.addFlashAttribute("mensaje", "Paciente eliminado con éxito");
-	    return "redirect:/paciente/listar";
-	}*/
 	
 	@DeleteMapping("/paciente/{id}")
 	public String eliminarPaciente(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
@@ -63,68 +56,7 @@ public class PacienteViewController {
 	    return "redirect:/paciente/listar";
 	}
 	
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-@RestController
-@RequestMapping("/paciente")
-public class PacienteController {
-	
-	@Autowired
-	private PacienteRepository  pacienteRepository;
-	
-	@GetMapping("/listar")
-	@Operation(description = "Muestra todos los pacientes", summary = "Muestra una lista de pacientes en la base de datos")
-	public List<Paciente> listaPacientes() {
-		return pacienteRepository.mostrarPacientes();
-	}
-	
-	
-	@GetMapping("/{id}")
-	@Operation(description = "Encuentra un paciente por ID", summary = "Proporciona un ID para buscar un paciente específico en la base de datos")
-	public Paciente obtenerPacientePorId(@PathVariable Integer id) {
-		return pacienteRepository.searchById(id);
-	}
-	
-	
-	@PostMapping("/registrar")
-	@Operation(description = "Crea un nuevo paciente", summary = "Registra un nuevo paciente en la base de datos")
-	public String registrarPacientes(@RequestBody Paciente paciente) {
-		return pacienteRepository.crearPaciente(paciente);
-	}
-	
-	@PutMapping("/actualizar")
-	@Operation(description = "Actualiza datos de un paciente", summary = "Actualiza los datos de un paciente en la base de datos")
-	public Paciente actualizarPacientes(@RequestBody Paciente paciente) {
-		return pacienteRepository.actualizarPaciente(paciente);
-	}
-	@DeleteMapping("/{id}")
-	@Operation(description = "Elimina un paciente por ID", summary = "Proporciona un ID para eliminar un usuario específico en la base de datos")
-	public String eliminarPacientes(@PathVariable Integer id) {
-		return pacienteRepository.eliminarPaciente(id);
-	}
-	
-	@GetMapping("/consultarHistorial")
-	@Operation(description = "Muestra todos los historiales de un paciente", summary = "Proporciona un ID para buscar un usuario específico en la base de datos")
-	public List<PacienteConHistorial> obtenerPacientesConHistorial() {
-	    return pacienteRepository.obtenerPacientesConHistorial();
-	}
-}
-
-*/
 
 
